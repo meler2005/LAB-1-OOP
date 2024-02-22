@@ -1,0 +1,52 @@
+using System;
+
+// Інтерфейс для деталі
+interface IDetail
+{
+    string GetDetailsInfo(); // Метод для отримання інформації про деталь
+}
+
+// Клас, що представляє деталь
+class Detail : IDetail
+{
+    // Властивості деталі
+    public string Name { get; set; } // Назва
+    public string Type { get; set; } // Тип
+    public int Quantity { get; set; } // Кількість
+    public int WeightPerPiece { get; set; } // Вага одного екземпляру
+
+    // Конструктор класу Detail
+    public Detail(string name, string type, int quantity, int weightPerPiece)
+    {
+        Name = name;
+        Type = type;
+        Quantity = quantity;
+        WeightPerPiece = weightPerPiece;
+    }
+
+    // Реалізація методу з інтерфейсу для отримання інформації про деталь
+    public string GetDetailsInfo()
+    {
+        return $"{Name}, Тип: {Type}, Кількість: {Quantity}, Вага за одиницю: {WeightPerPiece} г";
+    }
+}
+
+// Головний клас програми
+class Program
+{
+    static void Main()
+    {
+        // Створення об'єктів деталей
+        Detail Фланець = new Detail("Фланець", "З", 3, 450);
+        Detail Перехідник = new Detail("Перехідник", "К", 8, 74);
+        Detail Станина = new Detail("Станина", "Про", 1, 117050);
+
+        // Вивід інформації про деталі
+        Console.WriteLine("Інформація про деталі:");
+        Console.WriteLine(Фланець.GetDetailsInfo());
+        Console.WriteLine(Перехідник.GetDetailsInfo());
+        Console.WriteLine(Станина.GetDetailsInfo());
+
+        Console.ReadLine(); // Очікування введення користувачем
+    }
+}
